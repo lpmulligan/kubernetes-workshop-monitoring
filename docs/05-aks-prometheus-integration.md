@@ -9,9 +9,11 @@ Prometheus is a popular open source metric monitoring solution and is a part of 
 
 ## Installation
 
-1. Download the template ConfigMap yaml file and save it as container-azm-ms-agentconfig.yaml.
+1. [Download](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) the template ConfigMap yaml file and save it as container-azm-ms-agentconfig.yaml.
 
 2. Edit the ConfigMap yaml file with your customizations to scrape Prometheus metrics.
+
+>  `sample-app` has been added to the example below.
 
 ```yaml
 kind: ConfigMap
@@ -117,6 +119,10 @@ kubectl apply -f container-azm-ms-agentconfig.yaml
 ```
 ## Query Log Analytics for Prometheus Data
 
+Log into the Azure Portal and navigate to your log analytics workspace.  Then
+`Solutions -> ContainerInsights -> Log Analytics Workspace -> Logs`
+
+Here is an example query based on `sample-app`.
 ```txt
 InsightsMetrics 
 | where Namespace == "prometheus"

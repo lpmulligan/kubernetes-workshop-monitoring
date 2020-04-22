@@ -7,7 +7,7 @@ This tutorial is designed for to provide a general introduction to the various m
 
 ## Target Audience
 
-The target audience for this tutorial is someone planning to support a production Kubernetes cluster and wants to understand how scaling works in Kubernetes.
+The target audience for this tutorial is someone planning to support a production Kubernetes cluster and wants to understand how monitoring works in Kubernetes and Azure.
 
 ## Labs
 

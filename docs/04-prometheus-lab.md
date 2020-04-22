@@ -40,9 +40,8 @@ stable/prometheus-operator \
 --values ../helm/prometheus_values.yaml
 # --values ../helm/alertmanager_values.yaml \
 ```
-Install Prometheus
 
-The installation uses ovverride values found in [prometheus_values.yaml](helm/prometheus_values.yaml).
+The installation uses override values found in [prometheus_values.yaml](../yaml/helm/prometheus_values.yaml).
 
 ``` bash    
     # Add the stable repo for Helm 3
@@ -104,23 +103,23 @@ Information can be found at [kubefwd](https://kubefwd.com/).
 
     * Create Namespace for Sample GO App
 
-    ```bash
-    # Create custom Namespace to deploy sample app to.
-    kubectl create namespace sample-app
-    ```
+        ```bash
+        # Create custom Namespace to deploy sample app to.
+        kubectl create namespace sample-app
+        ```
 
     * Build [Sample GO App](../../../app/sample-go/README.md) Container & Update Deployment Manifest
 
-    ```bash
-    # 1. Use ACR Build to create Container and Push to ACR
-    # 2. Update Container Image in Deployment manifest (prom-graf-sample-go-app.yaml) 
-    # Deploy the Sample GO Application with Updated Container Image
-    kubectl apply -f prom-graf-sample-go-app.yaml -n sample-app
-    # Deploy the ServiceMonitor to Monitor the Sample GO App
-    kubectl apply -f prom-graf-servicemonitor.yaml -n monitoring
-    # Deploy the Rule to Raise Alerts for the Sample GO App
-    kubectl apply -f prom-graf-rule.yaml -n monitoring
-    ```
+        ```bash
+        # 1. Use ACR Build to create Container and Push to ACR
+        # 2. Update Container Image in Deployment manifest (prom-graf-sample-go-app.yaml) 
+        # Deploy the Sample GO Application with Updated Container Image
+        kubectl apply -f prom-graf-sample-go-app.yaml -n sample-app
+        # Deploy the ServiceMonitor to Monitor the Sample GO App
+        kubectl apply -f prom-graf-servicemonitor.yaml -n monitoring
+        # Deploy the Rule to Raise Alerts for the Sample GO App
+        kubectl apply -f prom-graf-rule.yaml -n monitoring
+        ```
     * If there is interest in how Prometheus Metrics and Custom Metrics can be added to an existing application take a look at the [GO Code](../../../app/sample-go/app.go).
 
 6. Check Metrics and Alerts are Working for Sample GO App
@@ -151,7 +150,7 @@ Information can be found at [kubefwd](https://kubefwd.com/).
 * Checking Default Prometheus Configuration
 
 ```bash
-kubectl get secret prometheus-prometheus-operator-prometheus  -n monitoring -o json | jq -r '.data["prometheus.yaml.gz"]' | base64 --decode | gunzip
+kubectl get secret prometheus-prometheus-operator-prometheus -n monitoring -o json | jq -r '.data["prometheus.yaml.gz"]' | base64 --decode | gunzip
 ```
 
 * Checking Default Prometheus Alert Manager Configuration
@@ -163,7 +162,7 @@ kubectl get secret alertmanager-prometheus-operator-alertmanager -n monitoring -
 * Checking Custom Deployed ServiceMonitor (Sample GO App) Configuration
 
 ```bash
-kubectl get secret prometheus-prometheus-operator-prometheus  -n monitoring -o json | jq -r '.data["prometheus.yaml.gz"]' | base64 --decode | gunzip | grep sample-go
+kubectl get secret prometheus-prometheus-operator-prometheus -n monitoring -o json | jq -r '.data["prometheus.yaml.gz"]' | base64 --decode | gunzip | grep sample-go
 ```
 
 ## Docs / References
@@ -171,5 +170,6 @@ kubectl get secret prometheus-prometheus-operator-prometheus  -n monitoring -o j
 * [Prometheus Operator](https://github.com/helm/charts/blob/master/stable/prometheus-operator/README.md)
 * [Crash Course to Monitoring K8s](https://www.sumologic.com/blog/cloud/how-to-monitor-kubernetes/)
 * [Prometheus Operator Alerting](https://github.com/coreos/prometheus-operator/blob/v0.38.0/Documentation/user-guides/alerting.md)
+* [Kubernetes Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 
 #### Next: [AKS and Prometheus Integration](05-aks-prometheus-integration.md)

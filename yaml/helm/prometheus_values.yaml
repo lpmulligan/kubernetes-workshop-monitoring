@@ -1,0 +1,31 @@
+---
+# Helm 3 Overrides
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+    patch:
+      enabled: false
+  createCustomResource: false
+  tlsProxy:
+    enabled: false
+# Forcing Kubelet metrics scraping on http
+# Kubelet scraping doesn't work in RBAC enabled AKS clusters 
+kubelet:
+  enabled: false
+  serviceMonitor:
+    https: false
+# Disabling scraping of Master Nodes Components
+# Scraping Kubernetes master components doesn't work in AKS
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeEtcd:
+  enabled: false
+kubeProxy:
+  enabled: false
+# Need to set these values so that services and rules can be added easily and Prometheus will pick them up
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false

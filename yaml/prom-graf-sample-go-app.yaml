@@ -1,0 +1,43 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: sample-go
+spec:
+  replicas: 2
+  selector:
+     matchLabels:
+       app: sample-go
+  template:
+    metadata:
+      labels:
+        app: sample-go
+    spec:
+      containers:
+      - name: sample-go
+        image: lpm10meus2acr.azurecr.io/sample-go:v1
+        ports:
+        - name: web
+          containerPort: 8080
+        resources:
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
+          requests:
+            cpu: "50m"
+            memory: "128Mi"
+      imagePullSecrets:
+      - name: acr-secret
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sample-go
+  labels:
+    app: sample-go
+spec:
+  selector:
+    app: sample-go
+  type: LoadBalancer    
+  ports:
+  - name: web
+    port: 8080

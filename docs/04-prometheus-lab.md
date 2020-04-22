@@ -108,7 +108,7 @@ Information can be found at [kubefwd](https://kubefwd.com/).
         kubectl create namespace sample-app
         ```
 
-    * Build [Sample GO App](../../../app/sample-go/README.md) Container & Update Deployment Manifest
+    * Build [Sample GO App](../app/sample-go/README.md) Container & Update Deployment Manifest
 
         ```bash
         # 1. Use ACR Build to create Container and Push to ACR
@@ -120,7 +120,7 @@ Information can be found at [kubefwd](https://kubefwd.com/).
         # Deploy the Rule to Raise Alerts for the Sample GO App
         kubectl apply -f prom-graf-rule.yaml -n monitoring
         ```
-    * If there is interest in how Prometheus Metrics and Custom Metrics can be added to an existing application take a look at the [GO Code](../../../app/sample-go/app.go).
+    * If there is interest in how Prometheus Metrics and Custom Metrics can be added to an existing application take a look at the [GO Code](../app/sample-go/app.go).
 
 6. Check Metrics and Alerts are Working for Sample GO App
 

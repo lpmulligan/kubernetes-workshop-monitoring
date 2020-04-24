@@ -23,5 +23,5 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/prometheus-operator/re
 helm install prometheus-operator  \
 stable/prometheus-operator \
 --namespace monitoring \
---values ../helm/prometheus_values.yaml
-# --values ../helm/alertmanager_values.yaml \
+--values helm/prometheus_values.yaml
+# --values helm/alertmanager_values.yaml \

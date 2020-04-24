@@ -112,6 +112,8 @@ Information can be found at [kubefwd](https://kubefwd.com/).
 
         ```bash
         # 1. Use ACR Build to create Container and Push to ACR
+        cd kubernetes-workshop-monitoring/app/sample-go
+        az acr build --registry <registry name> --image sample-go:v1 .
         # 2. Update Container Image in Deployment manifest (prom-graf-sample-go-app.yaml) 
         # Deploy the Sample GO Application with Updated Container Image
         kubectl apply -f prom-graf-sample-go-app.yaml -n sample-app

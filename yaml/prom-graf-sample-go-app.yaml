@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sample-go
-        image: lpm10meus2acr.azurecr.io/sample-go:v1
+        image: lpmeus2acr.azurecr.io/sample-go:v1
         ports:
         - name: web
           containerPort: 8080

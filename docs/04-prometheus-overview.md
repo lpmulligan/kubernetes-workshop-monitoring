@@ -86,6 +86,10 @@ The Prometheus Expression Browser
 ## Docs / References
 
 * [Common Queries in PromQL](https://www.robustperception.io/common-query-patterns-in-promql)
-
 * [Prometheus Operator](https://coreos.com/blog/the-prometheus-operator.html)
+* [Operator Model - Kubernetes Documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
+* [Operator Model - CoreOS](https://coreos.com/operators/)
+
+
 #### Next: [Prometheus Lab](04-prometheus-lab.md)
+
